@@ -81,7 +81,7 @@ final class CatBreedTableViewCell: UITableViewCell {
             contentStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
             contentStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
 
-            breedImageView.heightAnchor.constraint(equalToConstant: 160)
+            breedImageView.heightAnchor.constraint(equalTo: breedImageView.widthAnchor, multiplier: 9.0/16.0)
         ])
     }
 

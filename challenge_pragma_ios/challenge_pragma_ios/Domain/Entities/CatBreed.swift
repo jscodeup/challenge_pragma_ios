@@ -13,4 +13,9 @@ struct CatBreed {
     let origin: String
     let intelligence: Int
     let imageUrl: String?
+
+    // Campos para vista de detalle
+    let description: String?
+    let lifeSpan: String?
+    let adaptability: Int?
 }
