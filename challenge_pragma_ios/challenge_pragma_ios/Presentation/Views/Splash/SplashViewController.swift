@@ -13,7 +13,7 @@ final class SplashViewController: UIViewController {
         let label = UILabel()
         label.text = "Catbreeds"
         label.font = UIFont.boldSystemFont(ofSize: 24)
-        label.textColor = .label
+        label.textColor = .black
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
