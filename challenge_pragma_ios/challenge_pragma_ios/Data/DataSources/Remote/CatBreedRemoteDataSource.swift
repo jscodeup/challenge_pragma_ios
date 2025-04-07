@@ -9,6 +9,8 @@ import Foundation
 
 final class CatBreedRemoteDataSource {
 
+    private let apiKey = "live_99Qe4Ppj34NdplyLW67xCV7Ds0oSLKGgcWWYnSzMJY9C0QOu0HUR4azYxWkyW2nr"
+
     func fetchBreeds(completion: @escaping (Result<[CatBreed], Error>) -> Void) {
         let urlString = "https://api.thecatapi.com/v1/breeds"
         guard let url = URL(string: urlString) else {
@@ -16,7 +18,10 @@ final class CatBreedRemoteDataSource {
             return
         }
 
-        let task = URLSession.shared.dataTask(with: url) { (data: Data?, response: URLResponse?, error: Error?) in
+        var request = URLRequest(url: url)
+        request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
+
+        let task = URLSession.shared.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
             if let error = error {
                 completion(.failure(error))
                 return
@@ -35,7 +40,6 @@ final class CatBreedRemoteDataSource {
                 completion(.failure(error))
             }
         }
-
 
         task.resume()
     }
