@@ -59,11 +59,16 @@ final class SplashViewController: UIViewController {
     }
 
     private func transitionToHome() {
-        let homeVC = HomeViewController()
-        let navVC = UINavigationController(rootViewController: homeVC)
+        let remoteDataSource = CatBreedRemoteDataSource()
+        let repository = CatBreedRepositoryImpl(remoteDataSource: remoteDataSource)
+        let viewModel = CatBreedsViewModel(repository: repository)
+        let breedsVC = CatBreedsViewController(viewModel: viewModel)
+        let navVC = UINavigationController(rootViewController: breedsVC)
+
         if let window = UIApplication.shared.windows.first {
             window.rootViewController = navVC
             window.makeKeyAndVisible()
         }
     }
+
 }

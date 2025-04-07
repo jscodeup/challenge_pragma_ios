@@ -12,19 +12,24 @@ struct CatBreedResponseDTO: Decodable {
     let name: String
     let origin: String
     let intelligence: Int
-    let image: ImageDTO?
-
-    struct ImageDTO: Decodable {
-        let url: String
-    }
+    let referenceImageId: String?
 
     func toDomain() -> CatBreed {
+        let imageUrl = referenceImageId.map {
+            "https://cdn2.thecatapi.com/images/\($0).jpg"
+        }
+
         return CatBreed(
             id: id,
             name: name,
             origin: origin,
             intelligence: intelligence,
-            imageUrl: image?.url
+            imageUrl: imageUrl
         )
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case id, name, origin, intelligence
+        case referenceImageId = "reference_image_id"
     }
 }
