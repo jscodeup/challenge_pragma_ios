@@ -1,0 +1,15 @@
+# Xcode
+*.xcuserdata/
+*.xcuserstate
+*.xcworkspace/xcuserdata/
+DerivedData/
+build/
+*.pbxuser
+!default.pbxuser
+
+# Swift Package Manager
+.swiftpm
+.build
+
+# CocoaPods
+Pods/
