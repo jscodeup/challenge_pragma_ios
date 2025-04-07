@@ -87,6 +87,8 @@ final class CatBreedDetailViewController: UIViewController {
             $0.numberOfLines = 0
             contentStackView.addArrangedSubview($0)
         }
+        
+        originLabel.accessibilityIdentifier = "originLabel"
     }
 
     // MARK: - Data
